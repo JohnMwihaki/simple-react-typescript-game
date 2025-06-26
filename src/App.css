@@ -1,0 +1,106 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+:root{
+  --primary-font:"Press Start 2P", system-ui;
+  --french-bistre: hsla(31, 17%, 44%, 1);
+  --bistre_a75: hsla(35, 100%, 9%, 0.75);
+  --camel: hsla(30, 30%, 58%, 1);
+  --golden-brown_a60: hsla(35, 70%, 38%, 0.6);
+  --granite-gray: hsla(0, 0%, 38%, 1);   
+  --white: hsla(0, 0%, 100%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+  
+}
+html{
+  font-size:62.5%;
+}
+body{
+    font-family:var(--primary-font);
+    font-size:2rem;
+}
+.game-wrapper{
+  min-height:100vh;
+  width:100%;
+  background:var(--golden-brown_a60);
+}
+.game-header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  color:var(--black);
+  padding:1rem 2rem;
+}
+.game-header-text{
+  text-transform:capitalize;
+  font-size:1.3rem;
+  padding:1.5rem;
+}
+.new-game-btn{
+   font-family:var(--primary-font);
+   padding:1.5rem;
+   color:var(--black);
+   background-color:var(--french-bistre);
+   border-radius:20px;
+   border:none;
+}
+.new-game-btn:disabled{
+  background-color: var(--granite-gray);
+}
+.trial-messege{
+  text-align: center;
+  padding:1.9rem;
+  font-weight:900px;
+  font-size:1.3rem;
+  text-transform: capitalize;
+}
+.input-wrapper{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.inputValue{
+  
+  text-align:center;
+  padding:1.3rem;
+  border:none;
+  font-size:2rem;
+  font-weight:700;
+  border-radius:5px;
+  margin-top:50px;
+}
+.inputValue::placeholder{
+  text-align:center;
+  padding:2rem;
+  border:none;
+  font-size:2rem;
+  font-weight:900;
+}
+.game-result{
+  margin-top:20px;
+  padding:2rem;
+  border-radius:10px;
+  border:none;
+  color:var(--black);
+}
+.guess-number{
+  font-family: var(--primary-font);
+  margin-top:50px;
+  padding:2rem;
+  border-radius:10px;
+  border:none;
+  color:var(--black);
+  background-color:var(--bistre_a75);
+ 
+}
+.guess-number:disabled{
+   background-color:var(--camel);
+  color:var(--white);
+}
+
+
+
+
