@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import GameMain from './Components/game'
-import viteLogo from '/vite.svg'
+import Socials from './Components/socials'
+import Footer from './Components/footer'
 import './App.css'
 
 function App() {
@@ -9,7 +8,9 @@ function App() {
 
   return (
     <>
+    <Socials/>
      <GameMain/>
+     <Footer/>
     </>
   )
 }

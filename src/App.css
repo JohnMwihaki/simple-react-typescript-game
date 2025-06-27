@@ -5,24 +5,63 @@
 }
 :root{
   --primary-font:"Press Start 2P", system-ui;
+  --secondary-font: "Poppins", sans-serif;
   --french-bistre: hsla(31, 17%, 44%, 1);
   --bistre_a75: hsla(35, 100%, 9%, 0.75);
   --camel: hsla(30, 30%, 58%, 1);
   --golden-brown_a60: hsla(35, 70%, 38%, 0.6);
-  --granite-gray: hsla(0, 0%, 38%, 1);   
+  --granite-gray: hsla(0, 0%, 38%, 1);  
+  --green:hsl(107, 85%, 62%);
+  --red-orange:hsl(26, 83%, 42%);
+  --red:hsl(11, 83%, 44%);
+  --light-yellow:hsl(66, 82%, 55%);
   --white: hsla(0, 0%, 100%, 1);
   --black: hsla(0, 0%, 0%, 1);
-  
 }
 html{
   font-size:62.5%;
 }
 body{
     font-family:var(--primary-font);
+    background-color: var(--golden-brown_a60);
     font-size:2rem;
 }
+.socials{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  padding:1.3rem;
+  background-color: var(--french-bistre);
+
+}
+.logo{
+  font-size:3rem;
+  font-weight:900;
+  color:var(--red);
+}
+span{
+  color:var(--light-yellow);
+  font-size:3rem;
+  font-weight:900;
+
+}
+.links{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  gap:10px;
+ 
+}
+.link-item{
+  font-size:4rem;
+  font-weight:900;
+  padding:1.2rem;
+  border-radius: 10px;
+  color:var(--bistre_a75);
+
+}
 .game-wrapper{
-  min-height:100vh;
+  min-height:73vh;
   width:100%;
   background:var(--golden-brown_a60);
 }
@@ -36,7 +75,9 @@ body{
 .game-header-text{
   text-transform:capitalize;
   font-size:1.3rem;
+  border-radius: 10px;
   padding:1.5rem;
+  text-decoration: underline .3rem var(--red);
 }
 .new-game-btn{
    font-family:var(--primary-font);
@@ -82,10 +123,33 @@ body{
 .game-result{
   margin-top:20px;
   padding:2rem;
-  border-radius:10px;
   border:none;
+  border-radius:10px;
+  border-top:20px solid var(--bistre_a75);
   color:var(--black);
+  background-color:var(--green) ;
+  flex-wrap:wrap;
+
 }
+
+.result-win {
+  background-color: var(--green);
+  color: var(--white);
+}
+.result-lost{
+  background-color:var(--red-orange);
+  color:var(--white);
+}
+.result-high {
+  background-color: var(--red);
+  color: var(--black);
+}
+
+.result-low {
+  background-color: var(--light-yellow);
+  color: var(--black);
+}
+
 .guess-number{
   font-family: var(--primary-font);
   margin-top:50px;
@@ -99,6 +163,25 @@ body{
 .guess-number:disabled{
    background-color:var(--camel);
   color:var(--white);
+}
+.footer{
+  font-family:var(--secondary-font) ;
+  text-align:center;
+  width:100%;
+  min-height: auto;
+  background-color: var(--bistre_a75);
+  padding:2rem;
+}
+.icons{
+  color:var(--red);
+}
+@media screen and (max-width:750px){
+  .game-wrapper{
+    max-width:100%;
+    min-height:auto;
+    flex-wrap:wrap;
+  }
+  
 }
 
 

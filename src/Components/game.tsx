@@ -7,12 +7,12 @@ type GameStateType = {
   gameTrials: number;
   secreteNumber: number | null;
   gameResult: string | null;
-  inputValue:string;
+  inputValue: string;
 };
 type GameActions =
   | { type: "new_game" }
   | { type: "player_guess"; payload: number }
-  | {type:"update_input";payload:string}
+  | { type: "update_input"; payload: string };
 
 const initialStateValue: GameStateType = {
   newGameBtn: false,
@@ -42,8 +42,7 @@ function gameReducer(state: GameStateType, action: GameActions): GameStateType {
     case "player_guess":
       const guess = action.payload;
       const numTrials = state.gameTrials - 1;
-      if(state.secreteNumber===null)
-        return state;
+      if (state.secreteNumber === null) return state;
 
       if (guess === state.secreteNumber) {
         return {
@@ -74,11 +73,11 @@ function gameReducer(state: GameStateType, action: GameActions): GameStateType {
             : `${guess} is less than secret number`,
       };
 
-      case "update_input":
-        return{
-            ...state,
-            inputValue:action.payload,
-        }
+    case "update_input":
+      return {
+        ...state,
+        inputValue: action.payload,
+      };
     default:
       return state;
   }
@@ -89,16 +88,18 @@ function GameMain() {
     return dispatch({ type: "new_game" });
   }
   function handleGuessBtn(e: React.FormEvent) {
-  e.preventDefault();
-  const numberValue= parseInt(state.inputValue);
-  dispatch({ type: "player_guess", payload: numberValue });
-}
+    e.preventDefault();
+    const numberValue = parseInt(state.inputValue);
+    dispatch({ type: "player_guess", payload: numberValue });
+  }
 
   return (
     <>
       <div className="game-wrapper">
         <div className="game-header">
-          <div className="game-header-text">Guess a number between 0 and 100</div>
+          <div className="game-header-text">
+            Guess a number between 0 and 100
+          </div>
           <button
             className="new-game-btn"
             onClick={handleNewGame}
@@ -107,32 +108,49 @@ function GameMain() {
             New Game
           </button>
         </div>
-        <div className="trial-messege">{" "}
-        {state.newGameBtn
-          ? `${state.gameTrials} remaining trial(s)`
-          : "Welcome! Click New Game to Start"}</div>
-       <form action="" className="input-wrapper">
-         <input
-          type="number"
-          value={state.inputValue}
-          onChange={(e) =>
-            dispatch({ type: "update_input", payload: e.target.value})
-          }
-          readOnly={state.guessInput}
-          placeholder="00"
-          max={100}
-          className="inputValue"
-         
-        />
-        {state.gameResult && <p className="game-result ">{state.gameResult}</p>}
-        <button
-          className="guess-number"
-          onClick={handleGuessBtn}
-          disabled={state.guessNumber}
-        >
-          Guess
-        </button>
-       </form>
+        <div className="trial-messege">
+          {" "}
+          {state.newGameBtn
+            ? `${state.gameTrials} remaining trial(s)`
+            : "Welcome! Click New Game to Start"}
+        </div>
+        <form action="" className="input-wrapper">
+          <input
+            type="number"
+            value={state.inputValue}
+            onChange={(e) =>
+              dispatch({ type: "update_input", payload: e.target.value })
+            }
+            readOnly={state.guessInput}
+            placeholder="00"
+            max={100}
+            className="inputValue"
+          />
+          {state.gameResult && (
+            <p
+              className={`game-result ${
+                state.gameResult?.includes("won")
+                  ? "result-win"
+                  : state.gameResult?.includes("greater")
+                  ? "result-high"
+                  : state.gameResult?.includes("less")
+                  ? "result-low"
+                  : state.gameResult.includes("You lost")
+                  ? "result-lost"
+                  : ""
+              }`}
+            >
+              {state.gameResult}
+            </p>
+          )}
+          <button
+            className="guess-number"
+            onClick={handleGuessBtn}
+            disabled={state.guessNumber}
+          >
+            Guess
+          </button>
+        </form>
       </div>
     </>
   );
